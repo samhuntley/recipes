@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\HTTP\Request;
 use App\Recipe;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class RecipesController extends Controller
 {
@@ -65,11 +66,13 @@ class RecipesController extends Controller
       $photo = $request->file('photo');
       $photoName = time() . "-" . $photo->getClientOriginalName();
       $photo->move('recipe-photos', $photoName);
-      //$image = Image::make(sprintf('uploads/%s', $image_name))->resize(200, 200)->save();
+      $image = Image::make(sprintf('recipe-photos/%s', $photoName))->resize(200, 200)->save();
       $r['photo'] = $photoName;
+    } else {
+      $r['photo'] = '';
     }
 
-    auth()->user()->create(
+    auth()->user()->publish(
       new Recipe($r)
     );
 

@@ -34,7 +34,7 @@ class User extends Authenticatable
       return $this->hasMany('App\Recipe');
     }
 
-    public function create(Recipe $recipe) {
+    public function publish(Recipe $recipe) {
       $this->recipes()->save($recipe);
     /*  Recipe::create([
         'name' => request('name'),

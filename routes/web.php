@@ -15,9 +15,7 @@ Auth::routes();
 
 //Route::get('/recipebook', 'HomeController@index');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/recipes', 'RecipesController@index');
 Route::get('/recipes/create', 'RecipesController@create');
