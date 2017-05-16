@@ -1,5 +1,8 @@
 <div class="form-group">
   <label>Ingredients</label>
+  <div class="btn-group pull-right" role="group" aria-label="...">
+    <a href="/recipes/{{ $recipe->id }}/ingredients/add" class="btn btn-default">Add</a>
+  </div>
   @foreach ($recipe->ingredients as $ingredient)
 
     <fieldset class="form-group form-inline">
@@ -20,10 +23,14 @@
           <option value="">Select&hellip;</option>
           @if (count($measurements) > 0)
             @foreach($measurements as $m)
-              <option value="{{ $m }}" {{ $m == $ingredient->measurement ? 'selected="selected"' : '' }}>{{ $m }}</option>
+              <option value="{{ $m->id }}" {{ $m->id == $ingredient->measurement->id ? 'selected="selected"' : '' }}>{{ $m->name }}</option>
             @endforeach
           @endif
         </select>
+      </div>
+
+      <div class="btn-group pull-right" role="group" aria-label="...">
+        <a href="/recipes/{{ $recipe->id }}/ingredients/{{ $ingredient->id }}/edit" class="btn btn-default">Edit</a>
       </div>
 
     </fieldset>

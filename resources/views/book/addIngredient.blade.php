@@ -27,7 +27,7 @@
                         <option value="">Select&hellip;</option>
                         @if (count($measurements) > 0)
                           @foreach($measurements as $m)
-                            <option value="{{ $m }}">{{ $m }}</option>
+                            <option value="{{ $m->id }}">{{ $m->name }}</option>
                           @endforeach
                         @endif
                       </select>

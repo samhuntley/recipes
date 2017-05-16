@@ -26,5 +26,9 @@ Route::post('/recipes/{recipe}', 'RecipesController@update')->name('recipe');
 
 Route::get('recipes/{recipe}/delete', 'RecipesController@delete');
 
+/*** Ingredients ***/
+
 Route::get('/recipes/{recipe}/ingredients/add', 'IngredientsController@create');
+Route::get('/recipes/{recipe}/ingredients/{ingredient}/edit', 'IngredientsController@edit');
 Route::post('/recipes/{recipe}/ingredients/add', 'IngredientsController@store')->name('ingredient');
+Route::get('/recipes/{recipe}/ingredients/{ingredient}/delete', 'IngredientsController@delete');

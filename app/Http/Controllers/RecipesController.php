@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\Repositories\Recipes;
 use App\Ingredient;
+use App\Measurement;
 
 class RecipesController extends Controller
 {
@@ -75,7 +76,7 @@ class RecipesController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-      $measurements = ['lb', 'oz'];
+      $measurements = Measurement::all();
       return view('book.edit', compact('recipe', 'measurements'));
     }
 
