@@ -6,32 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-  protected $fillable = ['title', 'story', 'description', 'photo'];
 
+  protected $fillable = ['name', 'instructions', 'story', 'user_id']; 
   /**
-   * Get the recipes that use this ingredient
+   * Get the ingredients for the recipes
    */
-  public function recipes() {
-    return $this->belongsToMany('App\Ingredient')->withTimestamps();
-      return $this->belongsToMany('App\Instructions')->withTimestamps();
-  }
 
-  /**
-   * Get the instructions
-   */
-  public function instructions() {
-    return $this->hasMany('App\Instruction');
-  }
+   public function ingredients()
+   {
+     return $this->hasMany('App\Ingredient');
+   }
 
-  /**
-   * Get the owner of this recipe
-   */
-  public function user() {
-    return $this->belongsTo('App\User');
-  }
+
+   /**
+    * Get the user that created this recipe
+    */
+   public function user()
+   {
+     return $this->belongsTo('App\User');
+   }
 }

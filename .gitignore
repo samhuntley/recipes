@@ -1,5 +1,4 @@
 /node_modules
-/public/recipe-photos
 /public/storage
 /public/hot
 /storage/*.key

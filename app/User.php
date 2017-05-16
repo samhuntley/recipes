@@ -28,21 +28,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the recipes for this user
+     * Get the user's recipes
      */
-    public function recipes() {
-      return $this->hasMany('App\Recipe');
-    }
 
-    public function publish(Recipe $recipe) {
-      $this->recipes()->save($recipe);
-    /*  Recipe::create([
-        'name' => request('name'),
-        'description' => request('description'),
-        'story' => request('story'),
-        'photo' => request('photo'),
-        'user_id' => auth()->id()
-      ]);*/
-
-    }
+     public function recipes()
+     {
+       return $this->hasMany('App\Recipe');
+     }
 }

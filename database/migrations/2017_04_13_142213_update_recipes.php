@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRecipeNameToTitle extends Migration
+class UpdateRecipes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class UpdateRecipeNameToTitle extends Migration
     public function up()
     {
       Schema::table('recipes', function (Blueprint $table) {
-        $table->renameColumn('name', 'title');
+        $table->text('instructions')->nullable()->change();;
+        $table->text('story')->nullable()->change();;
       });
     }
 
@@ -26,7 +27,8 @@ class UpdateRecipeNameToTitle extends Migration
     public function down()
     {
       Schema::table('recipes', function (Blueprint $table) {
-        $table->renameColumn('title', 'name');
+        $table->text('instructions')->nullable(false)->change();;
+        $table->text('story')->nullable(false)->change();;
       });
     }
 }
