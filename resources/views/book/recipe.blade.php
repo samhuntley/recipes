@@ -15,7 +15,7 @@
         <div class="col-md-8 col-md-offset-2">
           <ul class="list-group ingredients">
             @foreach ($recipe->ingredients as $ingredient)
-              <li class="list-group-item"><strong>{{ $ingredient->amount }}{{ $ingredient->measurement }}</strong> {{ $ingredient->name }}</li>
+              <li class="list-group-item"><strong>{{ $ingredient->amount }}{{ $ingredient->measurement->name }}</strong> {{ $ingredient->name }}</li>
             @endforeach
           </ul>
         </div>
