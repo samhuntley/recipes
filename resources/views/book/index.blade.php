@@ -11,9 +11,14 @@
             <h1>Recipe Book <small>Store your Recipes</small></h1>
           </div>
         </div>
-        @foreach ($recipes as $recipe)
-          @include('partials.recipe')
-        @endforeach
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">Recipes</div>
+              @foreach ($recipes as $recipe)
+                @include('partials.recipe')
+              @endforeach
+          </div>
+        </div>
     </div>
 </div>
 @endsection
