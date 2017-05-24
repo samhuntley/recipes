@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Recipe;
 
 class User extends Authenticatable
 {
@@ -33,6 +34,6 @@ class User extends Authenticatable
 
      public function recipes()
      {
-       return $this->hasMany('App\Recipe');
+       return Recipe::where('user_id',$this->id)->get();
      }
 }

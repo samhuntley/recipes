@@ -26,9 +26,9 @@ class RecipesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Recipes $recipes)
+    public function index()
     {
-        $recipes = $recipes->all();
+        $recipes = auth()->user()->recipes();
         return view('book.index', compact('recipes'));
     }
 
