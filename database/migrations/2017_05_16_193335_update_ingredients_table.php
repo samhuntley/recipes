@@ -16,7 +16,7 @@ class UpdateIngredientsTable extends Migration
       Schema::table('ingredients', function (Blueprint $table) {
         $table->dropColumn('measurement');
 
-        $table->integer('measurement_id')->unsigned();
+        $table->integer('measurement_id')->unsigned()->nullable();
         $table->foreign('measurement_id')->references('id')->on('measurements');
       });
     }
@@ -28,9 +28,11 @@ class UpdateIngredientsTable extends Migration
      */
     public function down()
     {
-      $table->string('measurement');
+      Schema::table('ingredients', function (Blueprint $table) {
+        $table->dropForeign(['measurement_id']);
+        $table->dropColumn('measurement_id');
 
-      $table->dropForeign('measurement_id');
-      $table->dropColumn('measurement_id');
+        $table->string('measurement');
+      });
     }
 }
