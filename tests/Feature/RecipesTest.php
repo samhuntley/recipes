@@ -11,12 +11,6 @@ class CreateRecipesTest extends TestCase
 
   use DatabaseTransactions;
 
-  public function setUp() {
-    parent::setUp();
-
-    //$this->recipe = factory('App\Recipe')->create();
-  }
-
   /** @test */
   public function a_user_can_see_only_owned_recipes()
   {
