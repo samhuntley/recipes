@@ -22,3 +22,46 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Measurement::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->word,
+        'type' => $faker->randomElement(['volume' ,'weight', 'length', 'temperature'])
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Ingredient::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->word,
+        'amount' => $faker->numberBetween(1,100),
+        'recipe_id' => function() {
+          return factory('App\Recipe')->create()->id;
+        },
+        'user_id' => function() {
+          return factory('App\User')->create()->id;
+        },
+        'measurement_id' => function() {
+          return factory('App\Measurement')->create()->id;
+        },
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Recipe::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->sentence(3),
+        'instructions' => $faker->paragraph(2),
+        'story' => $faker->paragraph,
+        'user_id' => function() {
+          return factory('App\User')->create()->id;
+        },
+    ];
+});
